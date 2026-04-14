@@ -1,0 +1,17 @@
+.git
+.github
+.devcontainer
+.claude
+.ona
+.pytest_cache
+__pycache__
+*.pyc
+kt_data
+tests
+docs
+*.md
+!requirements.txt
+.env
+.gitignore
+.gitlab-ci.yml
+ruff.toml
