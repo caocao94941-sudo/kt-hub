@@ -9,13 +9,15 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app.py storage.py styles.py ./
+COPY .streamlit .streamlit/
 
-EXPOSE 10000
+ENV PORT=10000
+EXPOSE ${PORT}
 
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-    CMD curl --fail http://localhost:10000/_stcore/health || exit 1
+    CMD curl --fail http://localhost:${PORT}/_stcore/health || exit 1
 
-ENTRYPOINT ["streamlit", "run", "app.py", \
-    "--server.port=10000", \
-    "--server.address=0.0.0.0", \
-    "--server.headless=true"]
+CMD streamlit run app.py \
+    --server.port=${PORT} \
+    --server.address=0.0.0.0 \
+    --server.headless=true
