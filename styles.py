@@ -144,9 +144,9 @@ div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
     font-size: 1.8rem !important;
 }
 
-/* ── Buttons ────────────────────────────────────────── */
+/* ── Buttons (main area) ────────────────────────────── */
 
-.stButton > button {
+.main .stButton > button {
     background: linear-gradient(135deg, var(--teal-500), #0f766e) !important;
     color: var(--white) !important;
     border: none !important;
@@ -159,14 +159,36 @@ div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
     box-shadow: 0 2px 6px rgba(13, 148, 136, 0.3);
 }
 
-.stButton > button:hover {
+.main .stButton > button:hover {
     background: linear-gradient(135deg, #0f766e, #115e59) !important;
     box-shadow: 0 4px 12px rgba(13, 148, 136, 0.4) !important;
     transform: translateY(-1px);
 }
 
-.stButton > button:active {
+.main .stButton > button:active {
     transform: translateY(0);
+}
+
+/* ── Buttons (sidebar) ──────────────────────────────── */
+
+section[data-testid="stSidebar"] .stButton > button {
+    background: rgba(45, 212, 191, 0.12) !important;
+    color: var(--teal-300) !important;
+    border: 1px solid rgba(45, 212, 191, 0.25) !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    font-family: 'DM Sans', sans-serif !important;
+    padding: 0.45rem 1rem !important;
+    transition: all 0.2s ease !important;
+    box-shadow: none !important;
+    text-align: left !important;
+}
+
+section[data-testid="stSidebar"] .stButton > button:hover {
+    background: rgba(45, 212, 191, 0.22) !important;
+    color: var(--white) !important;
+    border-color: rgba(45, 212, 191, 0.4) !important;
+    transform: none;
 }
 
 /* ── Form inputs ────────────────────────────────────── */

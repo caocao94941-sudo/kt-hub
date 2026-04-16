@@ -173,31 +173,32 @@ def page_dashboard() -> None:
     for p in projects:
         pct = _checklist_pct(p.get("checklist", []))
         doc_count = p.get("doc_count", 0)
-        st.markdown(
-            f"""<div class="kt-card">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start">
-                <div><h4>{p['name']}</h4>
-                <div class="meta">{(p.get('description') or '')[:120]}</div></div>
-                <div>{_status_badge(p['status'])}</div>
-            </div>
-            <div style="margin-top:0.8rem"><span class="tag">{p.get('phase','')}</span></div>
-            <div style="margin-top:0.8rem">
-                <div class="meta">交接进度 {pct}% · {doc_count} 份文档 · 负责人: {p.get('owner','-')}</div>
-                {_progress_bar(pct)}
-            </div></div>""",
-            unsafe_allow_html=True,
-        )
-        cols = st.columns([6, 1])
-        with cols[0]:
-            if st.button("打开项目 →", key=f"open_{p['id']}"):
-                st.session_state.current_project = p["id"]
-                st.session_state.page = "project_detail"
-                st.rerun()
-        with cols[1]:
-            if is_admin() and st.button("🗑️", key=f"del_{p['id']}"):
-                storage.add_log(st.session_state.user, "删除项目", p["name"])
-                storage.delete_project(p["id"])
-                st.rerun()
+        with st.container():
+            st.markdown(
+                f"""<div class="kt-card">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                    <div><h4>{p['name']}</h4>
+                    <div class="meta">{(p.get('description') or '')[:120]}</div></div>
+                    <div>{_status_badge(p['status'])}</div>
+                </div>
+                <div style="margin-top:0.8rem"><span class="tag">{p.get('phase','')}</span></div>
+                <div style="margin-top:0.8rem">
+                    <div class="meta">交接进度 {pct}% · {doc_count} 份文档 · 负责人: {p.get('owner','-')}</div>
+                    {_progress_bar(pct)}
+                </div></div>""",
+                unsafe_allow_html=True,
+            )
+            cols = st.columns([6, 1])
+            with cols[0]:
+                if st.button(f"打开项目 → {p['name']}", key=f"open_{p['id']}"):
+                    st.session_state.current_project = p["id"]
+                    st.session_state.page = "project_detail"
+                    st.rerun()
+            with cols[1]:
+                if is_admin() and st.button("🗑️", key=f"del_{p['id']}"):
+                    storage.add_log(st.session_state.user, "删除项目", p["name"])
+                    storage.delete_project(p["id"])
+                    st.rerun()
 
 
 # ── New Project ───────────────────────────────────────────────
