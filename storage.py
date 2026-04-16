@@ -458,15 +458,17 @@ def seed_projects() -> None:
         {
             "name": "AE Identification (WuKong)",
             "description": (
-                "【LSMV SaaS系统】利用大语言模型（AI）从社交媒体、医院及PDF文档（杂志期刊）中提取AE（药物不良反应）报道，"
-                "抽取后由PV团队人工审核修改，并向Global监管机构申报。\n\n"
-                "BPO: Berry Luan | 供应商对接人: 商汤-朱文力\n\n"
-                "【权限配置】QA权限需在CIDM申请组别 PDChinaAEIdentification-QAAdmin。"
-                "服务器LAAM账号: GLOLAAM_CHINA-AEIS-Admin-USR\n\n"
-                "【待办/痛点】\n"
-                "• 需找Marc确认存放在LAAM上的服务器系统密码\n"
-                "• CR1: 需考虑整合SSO CIDM登录\n"
-                "• CR2: 计划将AI底层从商汤切换为罗氏内部太极(Taichi)平台"
+                "基础信息：去年上线的LSMV SaaS系统（供药企使用），业务负责人(BPO)为Berry Luan，"
+                "供应商对接人为商汤的朱文力。QA网址为 https://wukong-test.roche.com，"
+                "Prod为 https://wukong.roche.com。\n\n"
+                "功能机制：利用大语言模型（AI）从社交媒体、医院以及PDF文档（如杂志期刊）中提取AE"
+                "（药物不良反应）报道，抽取后由PV团队人工审核修改，并向全球(Global)监管机构申报。\n\n"
+                "权限配置：QA权限需在CIDM申请组别 PDChinaAEIdentification-QAAdmin。"
+                "服务器LAAM账号为 GLOLAAM_CHINA-AEIS-Admin-USR。\n\n"
+                "待办与痛点 (Next Step)：\n"
+                "• 需要找Marc确认存放在LAAM上的服务器系统密码\n"
+                "• CR1 变更：需考虑整合SSO CIDM登录\n"
+                "• CR2 变更：计划将AI底层从商汤切换为罗氏内部的太极(Taichi)平台"
                 "（已有Portkey Request: RITM6205283），或通义千问、Deepseek"
             ),
             "phase": "上市后", "owner": "Jenny Qu",
@@ -481,17 +483,18 @@ def seed_projects() -> None:
         {
             "name": "China Digital Safety Case Submission (RPA)",
             "description": (
-                "【GXP国际规范项目】RPA机器人直接登录全局LSMV系统查看产品信息，自动判断AE Case是否需递交监管部门，"
-                "并填写患者年龄、身高、体重、人种等信息，最终由人工校验提交。\n\n"
-                "BPO: Yue Tang | 供应商: Juexin Malf Ma\n\n"
-                "【待办/痛点】\n"
-                "• LSMV系统每年多次更新药品名称，或遇病人同时服用多种药物等复杂分类情况，RPA极易失效\n"
-                "• 目前机器人填写准确率80%，剩余20%需人工校验\n"
-                "• RPA部署由Global RPA团队统一上传至GitHub和Windows Server/瑞士发布控制中心\n"
-                "• 遇问题需向UiPath/OSP发Ticket找Lengfeng或Juexing处理\n\n"
-                "【环境信息】\n"
-                "DEV服务器 VM: rbamv952866, 账号: RXTCASU0\n"
-                "QA和Prod环境归Global管理，需确认UiPath和LAAM Safe组权限"
+                "基础信息：GXP国际规范项目，业务负责人为Yue Tang，供应商为Juexin Malf Ma。\n\n"
+                "功能机制：无具体网址，机器人直接登录全局LSMV系统查看产品信息，自动判断AE Case"
+                "是否需递交监管部门，并填写患者年龄、身高、体重、人种等信息，最终由人工校验提交。\n\n"
+                "待办与痛点 (Next Step)：\n"
+                "• 因LSMV系统每年多次更新药品名称，或遇病人同时服用多种药物等复杂分类情况，"
+                "RPA极易失效。目前机器人填写准确率为80%，剩余20%需人工校验\n"
+                "• 部署与运维：架构与测试记录在同一个文档中。RPA部署由Global RPA团队统一上传至"
+                "GitHub和Windows Server/瑞士发布控制中心。遇到问题需向UiPath/OSP发Ticket"
+                "找Lengfeng或Juexing处理\n\n"
+                "环境信息：LAAM上有DEV服务器(VM: rbamv952866, 账号: RXTCASU0, "
+                "密码: R*TCasecSub2025)及2台SQL信息，但QA和Prod环境归Global管理，"
+                "需确认UiPath和LAAM Safe组权限"
             ),
             "phase": "上市后", "owner": "Jenny Qu",
             "links": {
@@ -505,11 +508,14 @@ def seed_projects() -> None:
         {
             "name": "China Safety Aggregated Report",
             "description": (
-                "【含WebApp和Visual Dashboard】用于新药上市及连带安全市场、Global不良事件的申报。"
-                "系统Job通过模板解析元数据，利用预设逻辑（PDS）自动从Global系统拉取AE药品数据填充至系统。\n\n"
-                "供应商对接人: Juexin 江涛(Jiangtao Di)\n\n"
-                "【界面逻辑】绿色=系统自动填充，黄色=需业务手动填写，右侧标注具体计算逻辑。共3套环境。\n\n"
-                "【权限配置】LAAM无保险箱。Dashboard QA权限需在CIDM申请 "
+                "基础信息：包含WebApp和Visual Dashboard，供应商对接人为Juexin的Jiangtao Di。"
+                "QA App网址: https://apsar-test.roche.com/digital/export，"
+                "Prod: https://apsar.roche.com/digital/export。\n\n"
+                "功能机制：用于新药上市及连带安全市场、Global不良事件的申报。系统Job会通过模板解析"
+                "元数据，利用预设逻辑（PDS）自动从Global系统拉取AE药品数据填充至系统。\n\n"
+                "界面逻辑：界面中绿色代表系统自动填充，黄色代表需业务手动填写，右侧会标注具体计算逻辑。"
+                "系统共有3套环境，涉及Role task及Incident记录。\n\n"
+                "权限配置：LAAM无保险箱，Dashboard QA权限需在CIDM申请 "
                 "TC-APAC-Aggregated_Report_Visual_Dashboard-Consumers"
             ),
             "phase": "上市后", "owner": "Jenny Qu",
@@ -524,8 +530,10 @@ def seed_projects() -> None:
         {
             "name": "China RMP",
             "description": (
-                "【风险管理计划系统】用于提交Risk Management Plan。\n\n"
-                "【权限配置】QA权限及问题沟通需直接联系供应商 sun.chen@roche.com，LAAM权限已在CIDM上申请。"
+                "基础信息：用于提交风险管理计划 (Risk Management Plan)。"
+                "QA网址为 https://chinarmp-test.roche.com，Prod为 https://chinarmp.roche.com。\n\n"
+                "权限配置：QA权限及问题沟通需直接联系供应商 sun.chen@roche.com，"
+                "LAAM权限已在CIDM上申请"
             ),
             "phase": "上市后", "owner": "Jenny Qu",
             "links": {
@@ -540,12 +548,14 @@ def seed_projects() -> None:
         {
             "name": "MPR / MPR AI (Monthly Portfolio Reporting)",
             "description": (
-                "【PD产品组合项目管理和追溯的可视化系统】On-Premise环境，需SX账号登录。\n\n"
-                "BPO: Simon Wang | 日常操作用户: Yijing Zhu\n\n"
-                "【功能】项目经理(PM)维护自己的Program，记录药品Milestone并查验每月药品整治数据；"
+                "基础信息：PD产品组合项目管理和追溯的可视化系统，业务负责人为Simon Wang，"
+                "日常操作用户为Yijing Zhu。系统为On-Premise环境，需SX账号登录。"
+                "Web端网址为 https://pdalmcn-test.roche.com/mpr/programmanagement。\n\n"
+                "功能机制：项目经理(PM)维护自己的Program，记录药品Milestone并查验每月药品整治数据；"
                 "用户确认当月数据后可复制继续编辑下月。\n\n"
-                "【PDPM数据报表】包含9张报表，数据从MPR读取，每天通过PDS同步2次。"
-                "报表查看权限在CIDM申请组别: Tableau PD_China_MPR_Report_Project Black Belt access on CCAS"
+                "数据报表(PDPM)：包含9张报表，数据从MPR读取，每天通过PDS同步2次。"
+                "报表查看权限在CIDM申请组别：Tableau PD_China_MPR_Report_Project "
+                "Black Belt access on CCAS"
             ),
             "phase": "上市后", "owner": "Jenny Qu",
             "links": {
@@ -559,8 +569,10 @@ def seed_projects() -> None:
         {
             "name": "Mediplan",
             "description": (
-                "【临床实验药物计划与提醒系统】服务罗氏及其他机构医院，用于在其他系统建立Study研究编号。\n\n"
-                "【待办/痛点】\n"
+                "基础信息：临床实验药物计划与提醒系统（服务罗氏及其他机构医院），用于在其他系统建立"
+                "Study研究编号。QA网址: https://mediplan-test.roche.com/index，"
+                "Prod: https://mediplan.roche.com/index。\n\n"
+                "待办与痛点 (Next Step)：\n"
                 "• 供应商德勤(Deloitte)即将被替换，需尽快收回其权限\n"
                 "• 亟待补充缺失的系统用户名单、CIDM server、DB以及确切的LAAM信息"
             ),
@@ -576,10 +588,10 @@ def seed_projects() -> None:
         {
             "name": "Site Monitoring Follow Up Letter",
             "description": (
-                "【Tableau Dashboard】展示罗氏合作临床试验站点的指标评分。\n\n"
-                "BPO: Mandy Wu | 供应商: Juexin 江涛\n\n"
-                "【功能】收集拜访医院报告，通过数仓提取数据进行Site Monitoring及PDG研究中心能力分析。\n\n"
-                "【权限配置】数据来源权限由CIDM组配置，Jiangtao和Jimmy有权限配置。"
+                "基础信息：展示罗氏合作临床试验站点的指标评分Dashboard，业务负责人为Mandy Wu，"
+                "供应商为Juexin的江涛。QA网址: https://tableau-tst.ccas.roche.com/#/projects/46。\n\n"
+                "功能机制：收集拜访医院报告，通过数仓提取数据进行Site Monitoring及PDG研究中心能力分析。\n\n"
+                "权限配置：数据来源权限由CIDM组配置，Jiangtao和Jimmy有权限配置"
             ),
             "phase": "上市后", "owner": "Jenny Qu",
             "links": {
@@ -594,13 +606,16 @@ def seed_projects() -> None:
         {
             "name": "HGRAC / SUSAR RPA",
             "description": (
-                "【统筹与部署】服务器由Global RPA Team统管。密码存放在UiPath的Assets中。"
-                "Lefeng负责在Google Chat处理用户反馈，目前仅Lefeng能在开发环境自行发布，QA和Prod需找Global团队。\n\n"
-                "【HGRAC】包含Pharma和DIA两套环境，临床后交接给IRIS，"
-                "向\"人类遗传资源服务系统\"填报出境生物遗传信息申请。BPO: Zhihui Cheng。\n"
-                "痛点: 需通过Google访问，UI变化时需修改QA/PROD代码；机器人授权器需用户每年定期授权一次。\n\n"
-                "【SUSAR】GXP项目，处理非遗传严重不良反应。BPO: Elza Li。"
-                "外部Vendor将文档上传至BOX，RPA通过GDrive分析、翻译后返回BOX，并具备下载模板发邮件给医院的功能。"
+                "统筹与部署：服务器由Global RPA Team统管，供应商对接人为Juexin的Malf Ma。"
+                "密码存放在UiPath的Assets中。Lefeng负责在Google Chat处理用户反馈，"
+                "目前仅Lefeng能在开发环境自行发布，QA和Prod环境需找Global团队发布。\n\n"
+                "HGRAC：包含Pharma和DIA两套环境，临床后交接给IRIS，向\"人类遗传资源服务系统\""
+                "填报出境生物遗传信息申请，业务负责人为Zhihui Cheng。\n"
+                "痛点：需通过Google访问，操作网站原生信息，UI变化时需修改QA/PROD代码；"
+                "机器人授权器需用户每年定期授权一次。\n\n"
+                "SUSAR：GXP项目，处理非遗传严重不良反应，业务负责人为Elza Li。"
+                "外部Vendor将文档上传至BOX，RPA通过GDrive分析、翻译后返回BOX，"
+                "并具备下载模板发邮件给医院的功能"
             ),
             "phase": "上市后", "owner": "Iris Cai",
             "links": {
@@ -614,14 +629,14 @@ def seed_projects() -> None:
         {
             "name": "China MailGuard (Python)",
             "description": (
-                "【Python机器人系统】On Premise环境，需SX账号登录。"
-                "监控公共邮箱并处理附件，根据邮件标题等映射关系生成记录(track)，"
-                "通过调用罗氏接口或第三方进行翻译分析后回复医院及供应商。\n\n"
-                "BPO: Yue Tang\n\n"
-                "【环境配置】LAAM上维护了1个通用公共账号(generic)和2个做本地翻译用的secret账号。包含QA与Prod修改环境。\n\n"
-                "【待办/痛点】\n"
+                "基础信息：Python编写的机器人（On Premise环境，需SX账号登录），监控公共邮箱并处理附件，"
+                "根据邮件标题等映射关系生成记录(track)，通过调用罗氏接口或第三方进行翻译分析后回复医院及供应商。"
+                "业务负责人为Yue Tang。\n\n"
+                "环境配置：LAAM上维护了1个通用公共账号(generic)和2个做本地翻译用的secret账号。"
+                "包含QA与Prod修改环境。\n\n"
+                "待办与痛点 (Next Step)：\n"
                 "• 原翻译工具接口下线，需应对翻译接口变化的Task\n"
-                "• 记录中疑似缺少2台服务器(QA/Prod)的具体信息，有待核实"
+                "• 目前记录中疑似缺少2台服务器(QA/Prod)的具体信息，有待核实"
             ),
             "phase": "上市后", "owner": "Jenny Qu",
             "links": {
@@ -635,11 +650,11 @@ def seed_projects() -> None:
         {
             "name": "Financial Report",
             "description": (
-                "【RPA财务报告处理系统】处理用户发到公邮的工单PDF文件（约200-300页/份）。"
-                "RPA下载附件，按页拆分成文件，提取关键词、重命名，上传至GDrive指定路径"
-                "（包含成本中心和URL路径两列信息），最后发送邮件通知用户。执行频率约Weekly。\n\n"
-                "【环境配置】共3套环境（开发和UAT服务器不同，但账号一致）。需使用SX账号登录服务器。\n\n"
-                "【待办/痛点】\n"
+                "功能机制：处理用户发到公邮的工单PDF文件（约200-300页/份）。RPA下载附件，按页拆分成文件，"
+                "提取关键词、重命名，上传至GDrive指定路径（包含成本中心和URL路径两列信息），"
+                "最后发送邮件通知用户。执行频率大致为Weekly。\n\n"
+                "环境配置：共3套环境（开发和UAT服务器不同，但账号一致）。需使用SX账号登录服务器。\n\n"
+                "待办与痛点 (Next Step)：\n"
                 "• Client secret (Google认证) 频繁过期，联系人 Yuki Zhou\n"
                 "• 需查看Marc的KT文档，了解如何申请为期3个月的SX账号服务器访问权限"
             ),
@@ -653,6 +668,7 @@ def seed_projects() -> None:
             },
         },
     ]
+
 
     for s in seed:
         create_project(
