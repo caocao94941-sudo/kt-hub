@@ -10,12 +10,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app.py storage.py styles.py ./
 
-EXPOSE 8501
+EXPOSE 10000
 
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-    CMD curl --fail http://localhost:8501/_stcore/health || exit 1
+    CMD curl --fail http://localhost:10000/_stcore/health || exit 1
 
 ENTRYPOINT ["streamlit", "run", "app.py", \
-    "--server.port=8501", \
+    "--server.port=10000", \
     "--server.address=0.0.0.0", \
     "--server.headless=true"]
